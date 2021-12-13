@@ -1,0 +1,21 @@
+<section class="m-3">
+
+    <h1>Cav Weahter App</h1>
+    
+    <label for="city">city:</label>
+    <input type="text" id="city" [(ngModel)]="inputCity" />
+    <button (click)="takeCity()">Controlla Meteo</button>
+    
+    <div *ngIf="city | async as cit" class="m-2 p-2">
+        <p>
+            {{ cit.name }}, {{ cit.sys.country }},
+            {{ date | date: "d MMMM yyyy" }}
+        </p>
+        <p>
+            {{ cit.main.temp | number: "1.0-0" }}<sup>c°</sup>
+            {{ cit.weather[0].description }}
+            <img src="{{ icon }}" alt="condizioni meteo" />
+        </p>
+    </div>
+    
+</section>
